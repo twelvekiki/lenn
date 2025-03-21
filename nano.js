@@ -65,5 +65,5 @@ const simpleGit = require("simple-git");
     "info"
   );
 
-  await makeCommits(5);
+  await makeCommits(1000);
 })();
