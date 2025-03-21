@@ -302,8 +302,8 @@ exports.smsg = (client, m, store) => {
          (m.mtype == 'viewOnceMessage' && m.msg?.caption) || 
          m.text);
 
-        let quoted = (m.quoted = m.msg.contextInfo ? m.msg.contextInfo.quotedMessage : null);
-        m.mentionedJid = m.msg.contextInfo ? m.msg.contextInfo.mentionedJid : [];
+        let quoted = (m.quoted = m.msg?.contextInfo?.quotedMessage || null);
+        m.mentionedJid = m.msg?.contextInfo?.mentionedJid || [];
 
         if (m.quoted) {
             let type = getContentType(quoted);
