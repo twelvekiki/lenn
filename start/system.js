@@ -126,7 +126,7 @@ module.exports = client = async (client, m, chatUpdate, store) => {
         }*/
 
         //menghapus statusMention di Group
-        if (m.mtype.includes("groupStatusMentionMessage") && m.isGroup && isBotAdmins) {
+        if (m.mtype.includes("groupStatusMentionMessage") && m.isGroup) {
             await client.deleteMessage(m.chat, m.key);
         }
 
@@ -277,6 +277,7 @@ commands:
  
 ⋆˙⟡ — AI
  .𖥔 ݁— ${prefix}heckai
+ .𖥔 ݁— ${prefix}gemini
  .𖥔 ݁— ${prefix}bocchi
  .𖥔 ݁— ${prefix}jeslyn
  
@@ -1147,6 +1148,16 @@ case "bocchi": {
     reply(hmm);
 }
 break;
+
+case "gemini": {
+if (!text) return reply(`contoh: ${prefix + command} haloo bagaimana kabar mu`);
+await reaction(m.chat, "⚡")
+let schat = senderNumber;
+const ahh = await fetchJson(`https://api.hiuraa.my.id/ai/gemini-advanced?text=${encodeURIComponent(text)}&_mediaUrl=&sessionid=${schat}`);
+const hmm = ahh.result;
+reply(hmm);
+}
+break
 
 case "jeslyn": {
                 if (!text) return reply(`contoh: ${prefix + command} haiii, perkenalkan dirimu dong`);
